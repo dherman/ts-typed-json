@@ -1,22 +1,10 @@
-# The `unknown` type
+# Typed JSON
 
-This repo defines a TypeScript type called `unknown`. Like `any`,
-`unknown` applies to all JavaScript values, but it results in
-much stricter type checking. For example, extracting properties
-from an object of type `any` results in another `any` value:
+This library is a set of type definitions and utilities
+for dealing with JSON data in a type-safe way with TypeScript.
+The most important type definitions are `JsonValue`, `JsonObject`,
+and `JsonArray`, which correspond respectively to JSON values,
+objects, and arrays, as the names suggest.
 
-```
-let a: any = { foo: "bar" };
-
-a.foo // any
-```
-
-By contrast, you can't even extract a property from the type
-`unknown` without asserting it to be an object first:
-
-```
-let u: unknown = { foo: "bar" };
-
-// a.foo // type error
-(a as { foo: string }).foo // string
-```
+The library also exports safely-typed versions of `JSON.parse()`
+and `JSON.stringify()`.
