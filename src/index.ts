@@ -1,4 +1,6 @@
 import Dict from 'ts-dict';
+import * as fs from 'fs';
+import RSVP = require('rsvp');
 
 export { Object_ as Object, Array_ as Array };
 
@@ -29,4 +31,16 @@ export function parse(source: string): Value {
 /** A more safely typed version of `JSON.stringify()`. */
 export function stringify(value: Value): string {
     return JSON.stringify(value);
+}
+
+/** Synchronously reads a text file and parses it as JSON. */
+export function loadSync(path: string, encoding: string = 'utf8'): Value {
+    return parse(fs.readFileSync(path, encoding));
+}
+
+const readFile = RSVP.denodeify<string>(fs.readFile);
+
+export async function load(path: string, encoding: string = 'utf8'): Promise<Value> {
+    let source = await readFile(path, { encoding: encoding });
+    return parse(source);
 }
