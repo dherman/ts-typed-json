@@ -1,6 +1,6 @@
 {
   "name": "ts-typed-json",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "JSON types and utilities for TypeScript.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -20,6 +20,6 @@
   "homepage": "https://github.com/dherman/ts-typed-json#readme",
   "devDependencies": {
     "ts-dict": "^0.1.1",
-    "typescript": "^2.2.2"
+    "typescript": "^2.3.1"
   }
 }
