@@ -1,6 +1,5 @@
-import Dict from 'ts-dict';
-import * as fs from 'fs';
-import RSVP = require('rsvp');
+import { readFile } from 'fs/promises';
+import { readFileSync } from 'fs';
 
 export { Object_ as Object, Array_ as Array };
 
@@ -8,7 +7,7 @@ export { Object_ as Object, Array_ as Array };
 export type Value = null | boolean | number | string | Object_ | Array_;
 
 /** JSON object values. */
-interface Object_ extends Dict<Value> {}
+interface Object_ extends Record<string, Value> {}
 
 /** JSON array values. */
 interface Array_ extends Array<Value> {}
@@ -102,13 +101,11 @@ export function stringify(value: Value): string {
 }
 
 /** Synchronously reads a text file and parses it as JSON. */
-export function loadSync(path: string, encoding: string = 'utf8'): Value {
-    return parse(fs.readFileSync(path, encoding));
+export function loadSync(path: string, encoding: BufferEncoding = 'utf8'): Value {
+    return parse(readFileSync(path, encoding));
 }
 
-const readFile = RSVP.denodeify<string>(fs.readFile);
-
-export async function load(path: string, encoding: string = 'utf8'): Promise<Value> {
-    let source = await readFile(path, { encoding: encoding });
+export async function load(path: string, encoding: BufferEncoding = 'utf8'): Promise<Value> {
+    let source = await readFile(path, encoding);
     return parse(source);
 }
