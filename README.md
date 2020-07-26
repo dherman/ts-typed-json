@@ -63,29 +63,53 @@ Tests if a JSON value is a JSON array.
 
 # Type Cast API
 
-## function JSON.asNull(x: JSON.Value): null
+## function JSON.asNull(x: JSON.Value, prefix?: string): null
 
 Casts a JSON value to `null`, throwing a `TypeError` if it fails.
 
-## function JSON.asBoolean(x: JSON.Value): boolean
+The optional `prefix` argument allows callers to provide a contextual
+string describing the value that is being tested, for the sake of
+generating useful error messages in the case of a type error.
+
+## function JSON.asBoolean(x: JSON.Value, prefix?: string): boolean
 
 Casts a JSON value to a boolean, throwing a `TypeError` if it fails.
 
-## function JSON.asNumber(x: JSON.Value): number
+The optional `prefix` argument allows callers to provide a contextual
+string describing the value that is being tested, for the sake of
+generating useful error messages in the case of a type error.
+
+## function JSON.asNumber(x: JSON.Value, prefix?: string): number
 
 Casts a JSON value to a number, throwing a `TypeError` if it fails.
 
-## function JSON.asString(x: JSON.Value): string
+The optional `prefix` argument allows callers to provide a contextual
+string describing the value that is being tested, for the sake of
+generating useful error messages in the case of a type error.
+
+## function JSON.asString(x: JSON.Value, prefix?: string): string
 
 Casts a JSON value to a string, throwing a `TypeError` if it fails.
 
-## function JSON.asObject(x: JSON.Value): JSON.Object
+The optional `prefix` argument allows callers to provide a contextual
+string describing the value that is being tested, for the sake of
+generating useful error messages in the case of a type error.
+
+## function JSON.asObject(x: JSON.Value, prefix?: string): JSON.Object
 
 Casts a JSON value to a JSON object, throwing a `TypeError` if it fails.
 
-## function JSON.asArray(x: JSON.Value): JSON.Array
+The optional `prefix` argument allows callers to provide a contextual
+string describing the value that is being tested, for the sake of
+generating useful error messages in the case of a type error.
+
+## function JSON.asArray(x: JSON.Value, prefix?: string): JSON.Array
 
 Casts a JSON value to a JSON array, throwing a `TypeError` if it fails.
+
+The optional `prefix` argument allows callers to provide a contextual
+string describing the value that is being tested, for the sake of
+generating useful error messages in the case of a type error.
 
 
 # Serialization and Deserialization API

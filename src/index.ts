@@ -17,10 +17,14 @@ export function isNull(x: Value): x is null {
     return x === null;
 }
 
+function msg(prefix: string | undefined, expected: string): string {
+    return (prefix ? prefix + " is " : "") + "not " + expected;
+}
+
 /** Cast a JSON value to `null`, throwing a `TypeError` if the cast fails. */
-export function asNull(x: Value): null {
+export function asNull(x: Value, prefix?: string): null {
     if (x !== null) {
-        throw new TypeError("not null");
+        throw new TypeError(msg(prefix, "null"));
     }
     return null;
 }
@@ -31,9 +35,9 @@ export function isBoolean(x: Value): x is boolean {
 }
 
 /** Cast a JSON value to boolean, throwing a `TypeError` if the cast fails. */
-export function asBoolean(x: Value): boolean {
+export function asBoolean(x: Value, prefix?: string): boolean {
     if (typeof x !== 'boolean') {
-        throw new TypeError("not boolean");
+        throw new TypeError(msg(prefix, "a boolean"));
     }
     return x;
 }
@@ -44,9 +48,9 @@ export function isNumber(x: Value): x is number {
 }
 
 /** Cast a JSON value to number, throwing a `TypeError` if the cast fails. */
-export function asNumber(x: Value): number {
+export function asNumber(x: Value, prefix?: string): number {
     if (typeof x !== 'number') {
-        throw new TypeError("not number");
+        throw new TypeError(msg(prefix, "a number"));
     }
     return x;
 }
@@ -57,9 +61,9 @@ export function isString(x: Value): x is string {
 }
 
 /** Cast a JSON value to string, throwing a `TypeError` if the cast fails. */
-export function asString(x: Value): string {
+export function asString(x: Value, prefix?: string): string {
     if (typeof x !== 'string') {
-        throw new TypeError("not string");
+        throw new TypeError(msg(prefix, "a string"));
     }
     return x;
 }
@@ -70,9 +74,9 @@ export function isObject(x: Value): x is Object_ {
 }
 
 /** Cast a JSON value to `Object`, throwing a `TypeError` if the cast fails. */
-export function asObject(x: Value): Object_ {
+export function asObject(x: Value, prefix?: string): Object_ {
     if (!isObject(x)) {
-        throw new TypeError("not a JSON object");
+        throw new TypeError(msg(prefix, "a JSON object"));
     }
     return x;
 }
@@ -83,9 +87,9 @@ export function isArray(x: Value): x is Array_ {
 }
 
 /** Cast a JSON value to `Array`, throwing a `TypeError` if the cast fails. */
-export function asArray(x: Value): Array_ {
+export function asArray(x: Value, prefix?: string): Array_ {
     if (!isArray(x)) {
-        throw new TypeError("not a JSON array");
+        throw new TypeError(msg(prefix, "a JSON array"));
     }
     return x;
 }
