@@ -20,13 +20,13 @@ import * as JSON from 'ts-typed-json';
 ## interface JSON.Object
 
 ```ts
-interface JSON.Object extends Record<string, Value> {}
+interface JSON.Object extends Record<string, JSON.Value> {}
 ```
 
 ## interface JSON.Array
 
 ```ts
-interface JSON.Array extends Array<Value> {}
+interface JSON.Array extends Array<JSON.Value> {}
 ```
 
 ## type JSON.Value
@@ -41,49 +41,49 @@ type JSON.Value = null | boolean | number | string | JSON.Object | JSON.Array;
 
 Tests if a JSON value is `null`.
 
-## function JSON.isBoolean(x: Value): x is boolean
+## function JSON.isBoolean(x: JSON.Value): x is boolean
 
 Tests if a JSON value is a boolean.
 
-## function JSON.isNumber(x: Value): x is number
+## function JSON.isNumber(x: JSON.Value): x is number
 
 Tests if a JSON value is a number.
 
-## function JSON.isString(x: Value): x is string
+## function JSON.isString(x: JSON.Value): x is string
 
 Tests if a JSON value is a string.
 
-## function JSON.isObject(x: Value): x is JSON.Object
+## function JSON.isObject(x: JSON.Value): x is JSON.Object
 
 Tests if a JSON value is a JSON object.
 
-## function JSON.isArray(x: Value): x is JSON.Array
+## function JSON.isArray(x: JSON.Value): x is JSON.Array
 
 Tests if a JSON value is a JSON array.
 
 # Type Cast API
 
-## function JSON.asNull(x: Value): null
+## function JSON.asNull(x: JSON.Value): null
 
 Casts a JSON value to `null`, throwing a `TypeError` if it fails.
 
-## function JSON.asBoolean(x: Value): boolean
+## function JSON.asBoolean(x: JSON.Value): boolean
 
 Casts a JSON value to a boolean, throwing a `TypeError` if it fails.
 
-## function JSON.asNumber(x: Value): number
+## function JSON.asNumber(x: JSON.Value): number
 
 Casts a JSON value to a number, throwing a `TypeError` if it fails.
 
-## function JSON.asString(x: Value): string
+## function JSON.asString(x: JSON.Value): string
 
 Casts a JSON value to a string, throwing a `TypeError` if it fails.
 
-## function JSON.asObject(x: Value): JSON.Object
+## function JSON.asObject(x: JSON.Value): JSON.Object
 
 Casts a JSON value to a JSON object, throwing a `TypeError` if it fails.
 
-## function JSON.asArray(x: Value): JSON.Array
+## function JSON.asArray(x: JSON.Value): JSON.Array
 
 Casts a JSON value to a JSON array, throwing a `TypeError` if it fails.
 
