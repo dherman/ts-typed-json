@@ -1,5 +1,4 @@
-import { readFile } from 'fs/promises';
-import { readFileSync } from 'fs';
+import * as fs from 'fs';
 
 export { Object_ as Object, Array_ as Array };
 
@@ -106,10 +105,10 @@ export function stringify(value: Value): string {
 
 /** Synchronously reads a text file and parses it as JSON. */
 export function loadSync(path: string, encoding: BufferEncoding = 'utf8'): Value {
-    return parse(readFileSync(path, encoding));
+    return parse(fs.readFileSync(path, encoding));
 }
 
 export async function load(path: string, encoding: BufferEncoding = 'utf8'): Promise<Value> {
-    let source = await readFile(path, encoding);
+    let source = await fs.promises.readFile(path, encoding);
     return parse(source);
 }
